@@ -1,0 +1,53 @@
+
+<!-- Begin page content -->
+<div class="container">
+	<div class="row page-header">
+		<h2>Course assignment</h2>
+	</div>
+	
+	<div class="row">
+		<div class="alert pull-left small" ng-show="showMessage"  ng-class="messageClass">
+	  		{{message}} 
+		</div>		
+	</div>
+	
+	<div class="row">
+
+		<button type="button" class="btn btn-default btn-sm" ng-click="saveCourseAssignment(courseUsers)">Save</button>
+		&nbsp;<button type="button" class="btn btn-default btn-sm" ng-click="back()">Back</button>
+		
+		<p/><p/>
+		
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Users assigned to the course, {{course.name}}</h3>
+			</div>
+			<div class="panel-body">
+
+
+<table
+			class="table table-hover">
+
+
+
+			<tbody>
+				<tr ng-repeat="usr in courseUsers">
+				<td>
+					<input type="checkbox" 
+						value="{{usr.name}}" ng-model="usr.selected">	{{usr.name}}
+				 </td>
+						
+				<td>{{usr.email}}</td>
+
+				</tr>
+			</tbody>
+
+		</table>
+
+			</div>
+		</div>
+		
+		
+	</div>
+
+</div>

@@ -1,0 +1,26 @@
+
+<!-- Begin page content -->
+<div class="container">
+	<div class="row page-header">
+		<h3>My training courses</h3>
+	</div>
+	
+
+	<div class="row" >
+	
+	<div class="list-group" style="width: 500px;">
+	 
+	  <a class="list-group-item"  ng-repeat="course in mycourses"  href="#/view/{{course.courseId}}/enr/{{course.enrollmentId}}" >
+
+	    <h4 class="list-group-item-heading"> <span class="badge">{{course.courseCode}}</span> {{course.courseName}}</h4>
+	    <p class="list-group-item-text">{{course.enrollmentName}}, Due date: {{course.enrollmentEnd}}</p>
+	
+	  </a>
+	  
+	</div>
+
+
+
+	</div>
+
+</div>

@@ -1,0 +1,37 @@
+
+<!-- Begin page content -->
+<div class="container">
+	<div class="row page-header">
+		<h3>Forgot your password?</h3>
+	</div>
+	
+
+
+	<div class="row">
+		<div class="alert pull-left small" ng-show="showMessage"  ng-class="messageClass">
+			{{message}}
+		</div>		
+	</div>
+	
+	<div class="row" >
+
+		<form role="form" >
+			<div class="form-group" style="width: 250px;" >
+				<label for="oldpass">Email address</label> 
+				<input ng-model="user.email" type="text" class="form-control"
+						id="oldpass" placeholder="Enter your email adress">
+			</div>
+			<div class="form-group" >
+			<button type="button" ng-click="sendpass(user)"
+				class="btn btn-default btn-sm">Send new password</button>
+			</div>
+
+		</form>
+
+
+
+	</div>
+
+	<!-- End of controller -->
+
+</div>

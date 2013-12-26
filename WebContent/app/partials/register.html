@@ -1,0 +1,58 @@
+
+<!-- Begin page content -->
+<div class="container" ng-controller="RegistrationControllers">
+	<div class="row page-header">
+		<h3>Registration</h3>
+	</div>
+	
+
+
+	<div class="row">
+		<div class="alert pull-left small" ng-show="showMessage"  ng-class="messageClass">
+			{{message}}
+		</div>		
+	</div>
+	
+	<div class="row" >
+
+		<form role="form" >
+			<div class="form-group" style="width: 250px;">
+			<label for="firstName">First name</label> 
+		    <input ng-model="user.firstName" type="text"
+					class="form-control" id="firstName" placeholder="Enter first name">
+			</div>
+			
+			<div class="form-group" style="width: 250px;">
+			<label for="lastName">Last name</label> 
+		    <input ng-model="user.lastName" type="text"
+					class="form-control" id="lastName" placeholder="Enter last name">
+			</div>
+			<div class="form-group" style="width: 450px;">
+			<label for="email">Email</label> 
+			<input ng-model="user.email" type="text" class="form-control"
+					id="name" placeholder="Enter email">
+			</div>
+			
+			<div class="form-group" style="width: 450px;">
+			<label for="description">Password</label> 
+			<input ng-model="user.password" type="password" class="form-control"
+					id="password" placeholder="Enter password">
+			</div>
+			
+
+			<button type="button" ng-click="save(user)"
+				class="btn btn-default btn-sm">Register</button>
+				
+			<button type="button" ng-click="back()"
+				class="btn btn-default btn-sm">Back to login</button>
+			<p/>				
+			<p/>
+		</form>
+
+
+
+	</div>
+
+	<!-- End of controller -->
+
+</div>

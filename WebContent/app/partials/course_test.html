@@ -1,0 +1,73 @@
+
+<!-- Begin page content -->
+<div class="container">
+	<div class="row page-header">
+		<h3>Training exam : {{exam_title}}</h3>
+	</div>
+	
+
+
+	<div class="row">
+		<div class="alert pull-left small" ng-show="showMessage"  ng-class="messageClass">
+	  		{{message}} 
+		</div>		
+	</div>
+	
+	<div class="row" >
+
+
+		<form role="form" >
+			<div class="form-group">
+				<h4 ng-hide="endOfExam">{{question.name}}</h4>
+				<h4 ng-show="endOfExam">{{testSummary}}</h4>
+				<br/>
+		<div class="row" >
+		  <div class="col-lg-6" >
+			<ul ng-show="endOfExam" class="list-group">
+			  <li class="list-group-item">
+			     <span class="label label-primary">{{questions.length}}</span>
+			   Questions have been asked.
+			  </li>
+			  <li class="list-group-item">
+			      <span class="label label-info">{{totalCorrect}}</span> Questions are correctly answered 
+			  
+			  </li>
+			  <li ng-show="passed" class="list-group-item">
+			   <span class="label label-success">Passed</span>
+			  </li>
+			  <li ng-hide="passed" class="list-group-item">
+			   <span class="label label-danger">Failed</span>
+			  </li>			  			  			  		  
+			</ul>
+			</div>
+			</div>
+			<div class="row"  ng-show="endOfExam">
+			   	<span class="small_left_margin">Incorrect answers:</span>
+					<ul class="small_left_margin">
+					  <li  ng-repeat="qa in wquestions" style="margin-top: 5px;">
+					  	{{qa.name}}<br/>
+					     <span class="label label-danger">Wrong</span> {{qa.ans}}
+					  </li>				  			  			  		  
+					</ul>	
+			</div>
+			
+				<div class="row" >
+				  <div class="small_left_margin" >
+				    <div class="input-group" ng-repeat="answer in question.answers">
+						<input style="align: left;" type="radio" ng-model="question.userAnswer" name="answergroup" id="no" value="{{answer.id}}" /> <label for="no">{{answer.answer}}</label> 
+				    </div>
+				    <br/>
+				  </div>
+				</div>
+	
+	 			<br/>
+				<button type="button" ng-show="endOfExam" class="btn btn-default btn-sm" ng-click="finishExam()">Finish</button>
+				<button type="button" class="btn btn-default btn-sm" ng-hide="endOfExam" ng-click="nextq()">Next</button>
+			</div>
+		</form>
+
+	</div>
+
+	<!-- End of controller -->
+
+</div>
