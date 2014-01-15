@@ -1,0 +1,27 @@
+
+<!-- Begin page content -->
+<div class="container">
+	<div class="row page-header">
+		<h3>Training course: {{course.name}}</h3>
+	</div>
+
+	<div class="row">
+
+		<div id="test" ng-bind-html="myHTML"></div>
+	</div>
+	<br />
+	<div class="row">
+
+		<div id="pageBottom">
+			<button type="button" ng-click="prevslide()" ng-disabled="isbegin"
+				class="btn btn-default btn-sm">Previous</button>
+			&nbsp;
+			<button type="button" ng-click="nextslide()" ng-disabled="isend"
+				class="btn btn-default btn-sm">Next</button>&nbsp;
+			<button type="button"  ng-show="isend" ng-click="startExam()"
+				class="btn btn-default btn-sm">Start exam</button>				
+			&nbsp; &nbsp;<label> Page: {{index}}</label>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,44 @@
+
+<!-- Begin page content -->
+<div class="container">
+	<div class="row page-header">
+		<h3>My completed training courses</h3>
+	</div>
+	
+
+	<div class="row" >
+
+		<table
+			class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th>Course code &nbsp;</th>
+					<th>Enrollment &nbsp;</th>
+					<th>Course &nbsp;</th>
+					<th>Due date &nbsp;</th>
+					<th>Completion date &nbsp;</th>
+					<th>Status &nbsp;</th>
+					<th>&nbsp;</th>
+				</tr>
+			</thead>
+
+
+			<tbody>
+				<tr ng-repeat="enrollment in enrollments">
+					<td> <span class="badge">{{enrollment.courseCode}}</span></td>
+					<td>{{enrollment.enrollmentName}}</td>
+					<td>{{enrollment.courseName}}</td>
+					<td>{{enrollment.enrollmentDue}}</td>
+					<td>{{enrollment.finishDate}}</td>
+					<td>{{enrollment.status}}</td>
+					<td align="right" style="width: 200px;">
+						<a ng-href="{{basePath}}/enrollment/certificate/test/{{enrollment.testId}}" target="_blank">Download certificate</a>
+					</td>
+				</tr>
+			</tbody>
+
+		</table>
+
+	</div>
+
+</div>

@@ -1,0 +1,118 @@
+
+<!-- Begin page content -->
+<div class="container">
+	<div class="row page-header">
+		<h3>User course enrollment</h3>
+	</div>
+
+	<div class="row">
+		<div class="alert pull-left small" ng-show="showMessage"
+			ng-class="messageClass">{{message}}</div>
+
+	</div>
+	<div class="row">
+
+		<form role="form" action="">
+			<div class="form-group" style="width: 450px;">
+				<label for="name">Name</label> <input ng-model="enrollment.name"
+					type="text" class="form-control" id="name" placeholder="Enter name">
+			</div>
+
+			<div class="form-group" style="width: 450px;">
+				<label for="description">Description</label> <input
+					ng-model="enrollment.description" type="text" class="form-control"
+					id="description" placeholder="Enter description">
+			</div>
+			<div class="form-group" style="width: 450px;">
+				<label for="course">Course name</label> <select id="course"
+					class="form-control" ng-model="enrollment.courseId"
+					ng-options="c.id as c.name for c in courses">
+<!-- 					<option value="">-- Choose a course --</option> -->
+				</select>
+			</div>
+
+			<div class="form-group" style="width: 350px;">
+				<label for="code">Start date</label> <input
+					ng-model="enrollment.start" type="text" class="form-control"
+					id="start" placeholder="Enter enrollment start date (MM/dd/yyyy)">
+			</div>
+			<div class="form-group" style="width: 350px;">
+				<label for="end">End date</label> <input ng-model="enrollment.end"
+					type="text" class="form-control" id="end"
+					placeholder="Enter enrollment end date (MM/dd/yyyy)">
+			</div>
+		</form>
+
+
+		<button type="button" class="btn btn-default btn-sm"
+			ng-click="saveCourseEnrollment(enrollment)">Save</button>
+		&nbsp;
+		<button class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">
+		  Add employee
+		</button>
+		&nbsp;
+		<button type="button" class="btn btn-default btn-sm" ng-click="back()">Back</button>	
+			
+		<p />
+		<p />
+		
+	</div>
+	<div class="row">
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Users assigned to the course</h3>
+			</div>
+			<div class="panel-body">
+
+
+				<table class="table table-hover">
+
+
+
+					<tbody>
+						<tr ng-repeat="usr in enrollment.users">
+							<td>{{usr.userName}}</td>
+							<td>{{usr.userEmail}}</td>
+							<td>{{usr.status}}</td>
+						</tr>
+					</tbody>
+
+				</table>
+
+			</div>
+		</div>
+
+
+	</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Add employee to course</h4>
+      </div>
+      <div class="modal-body">
+		<form role="form" action="">
+			<div class="form-group" style="width: 450px;">
+				<label for="course">Employee </label> <select id="course"
+					class="form-control" ng-model="user"
+					ng-options="c.name +' ('+ c.email+')' for c in users">
+				<option value="">-- Choose an employee --</option> 
+				</select>
+			</div>
+		</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="addToEnrollment(user)">Enroll</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+
+</div>

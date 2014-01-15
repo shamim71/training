@@ -1,0 +1,99 @@
+
+<!-- Begin page content -->
+<div class="container">
+	<div class="row page-header">
+		<h3>Training status report</h3>
+	</div>
+	
+	<div class="row">
+
+
+			<div  class="col-md-4 form-group">
+				 <input ng-model="filter.firstName"
+					type="text" class="form-control" placeholder="Enter first name">
+			</div>
+			<div class="col-md-4 form-group">
+				<input ng-model="filter.lastName"
+					type="text" class="form-control" placeholder="Enter last name">
+			</div>
+			<div class="col-md-2 form-group">
+				<input ng-model="filter.email"
+					type="text" class="form-control" placeholder="Enter email address">
+			</div>
+			<div class="col-md-10 form-group">
+				<span ng-repeat="course in courses">
+					<input type="checkbox" style="margin-left: 7px;"
+						value="{{course.id}}" ng-checked="selection.indexOf(course.id) > -1" ng-click="toggleSelection(course.id)">	{{course.name}}
+					</span>				
+			</div>													
+
+
+			<div class="col-md-8 form-group">
+				<button type="button" class="btn btn-default btn-sm"
+					ng-click="executeSearch()">Search</button>
+			</div>	
+
+	
+	</div>
+
+	<div class="row" >
+
+		<table
+			class="table table-striped table-hover table-bordered">
+			<thead>
+				<tr>
+					<th>First name &nbsp;</th>
+					<th>Last name &nbsp;</th>
+					<th>Email &nbsp;</th>
+					<th>Enrollment &nbsp;</th>
+					<th>Course code &nbsp;</th>
+					<th>Course name &nbsp;</th>
+					<th>Due date &nbsp;</th>
+					<th>Completion date &nbsp;</th>
+					<th>Status &nbsp;</th>
+					<th>&nbsp;</th>
+				</tr>
+			</thead>
+
+
+			<tbody>
+				<tr ng-repeat="enrollment in pagedItems[currentPage]">
+					<td>{{enrollment.firstName}}</td>
+					<td>{{enrollment.lastName}}</td>
+					<td>{{enrollment.email}}</td>
+					<td>{{enrollment.enrollmentName}}</td>
+					<td>{{enrollment.courseCode}}</td>
+					<td>{{enrollment.courseName}}</td>
+					<td>{{enrollment.enrollmentDue}}</td>
+					<td>{{enrollment.finishDate}}</td>
+					<td>{{enrollment.status}}</td>
+					<td align="right">
+						<a ng-href="{{basePath}}/enrollment/certificate/test/{{enrollment.testId}}" target="_blank">Certificate</a>
+					</td>
+				</tr>
+			</tbody>
+			</tbody>
+                <tfoot ng-show="showPager">
+                    <td colspan="10">
+                        <div class="pull-right">
+                            <ul class="pagination">
+                                <li ng-class="{disabled: currentPage == 0}">
+                                    <a href ng-click="prevPage()">&laquo; Prev</a>
+                                </li>
+                                <li ng-repeat="n in range(pagedItems.length)"
+                                    ng-class="{active: n == currentPage}"
+                                ng-click="setPage()">
+                                    <a href ng-bind="n + 1">1</a>
+                                </li>
+                                <li ng-class="{disabled: currentPage == pagedItems.length - 1}">
+                                    <a href ng-click="nextPage()">Next &raquo;</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tfoot>
+		</table>
+
+	</div>
+
+</div>
