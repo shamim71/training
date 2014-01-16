@@ -106,10 +106,10 @@ myAppControllers.controller('LoginControllers', [
 					UserService.Logged = false;
 
 					if (httpResponse.data
-							&& httpResponse.data.status_code == '401') {
+							&& httpResponse.data.code == '401') {
 						$scope.message = "Invalid user/password";
 					} else {
-						$scope.message = httpResponse.data.status_message;
+						$scope.message = httpResponse.data.message;
 					}
 
 					$scope.messageClass = 'alert-danger';

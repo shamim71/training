@@ -1,0 +1,92 @@
+
+<!-- Begin page content -->
+<div class="container">
+	<div class="row page-header">
+		<h3>Inventory status report</h3>
+	</div>
+	
+	<div class="row" >
+
+
+			<div  class="col-md-6 form-group" style="margin-left: 0px;">
+				
+				<select id="idAdjustment" ng-model="filter.type"
+					class="form-control">
+				<option value="">--Adjustment type--</option> 					
+				<option value="IN">CheckIn</option> 
+				<option value="OUT">CheckOut</option> 
+				</select>
+									
+			</div>
+			<div class="col-md-6 form-group">
+				<input ng-model="filter.customerSite"
+					type="text" class="form-control" placeholder="Customer site access ID">
+			</div>
+
+			<div class="col-md-1 form-group">
+				<button type="button" class="btn btn-default btn-sm"
+					ng-click="executeSearch()">Search</button>
+			</div>	
+			<div class="col-md-1 form-group">
+				<a ng-href="{{download_link}}" target="_blank">
+					<button type="button" class="btn btn-default btn-sm">Export</button>
+				</a>
+			</div>	
+	
+	</div>
+
+	<div class="row" >
+
+		<table
+			class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th>Txn ID &nbsp;</th>
+					<th>Txn date &nbsp;</th>					
+					<th>Inventory location&nbsp;</th>
+					<th>Adjustment type &nbsp;</th>
+					<th>Customer site ID &nbsp;</th>
+					<th>Item name &nbsp;</th>
+					<th>Quantity &nbsp;</th>
+					<th>Adjusted by &nbsp;</th>
+				</tr>
+			</thead>
+
+
+			<tbody>
+				<tr ng-repeat="enrollment in pagedItems[currentPage]">
+					<td>{{enrollment.id}}</td>
+					<td>{{enrollment.txnDate}}</td>
+					<td>{{enrollment.inventorySiteRefName}}</td>
+					<td>{{enrollment.adjustmentType}}</td>
+					<td>{{enrollment.customerSiteAccessId}}</td>
+					<td>{{enrollment.itemName}}</td>
+					<td>{{enrollment.quantity}}</td>
+					<td>{{enrollment.userName}}</td>
+				</tr>
+			</tbody>
+			</tbody>
+                <tfoot ng-show="showPager">
+                    <td colspan="10">
+                        <div class="pull-right">
+                            <ul class="pagination">
+                                <li ng-class="{disabled: currentPage == 0}">
+                                    <a href ng-click="prevPage()">&laquo; Prev</a>
+                                </li>
+                                <li ng-repeat="n in range(pagedItems.length)"
+                                    ng-class="{active: n == currentPage}"
+                                ng-click="setPage()">
+                                    <a href ng-bind="n + 1">1</a>
+                                </li>
+                                <li ng-class="{disabled: currentPage == pagedItems.length - 1}">
+                                    <a href ng-click="nextPage()">Next &raquo;</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tfoot>
+		</table>
+
+	</div>
+
+</div>

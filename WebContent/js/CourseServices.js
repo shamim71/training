@@ -6,7 +6,7 @@
 // In this case it is a simple value service.
 var myAppServices = angular.module('myApp.services', [ 'ngResource' ]);
 
- var serviceRoot = 'http://d1mnzch1.versacomllc.com:9080/training-server';
+ var serviceRoot = 'http://d1mnzch1.versacomllc.com:9080/quickbooks-gateway-server';
 //var serviceRoot = 'http://dalqbase1.versacomllc.com:8080/training-server';
 
 myAppServices.value('version', '0.1');
@@ -284,6 +284,20 @@ myAppServices.factory('LostPassword', [ '$resource', function($resource) {
 			method : 'POST',
 			params : {}
 		}
+	});
+
+} ]);
+
+myAppServices.factory('InventoryReports', [ '$resource', function($resource) {
+	return $resource(serviceRoot + '/inventory/adjustment/report', {
+		
+	}, /** Parameters */
+	{
+		search : {
+			method : 'POST',
+			params : {},
+			isArray : true
+		}		
 	});
 
 } ]);
